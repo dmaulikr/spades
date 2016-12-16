@@ -8,6 +8,19 @@
 
 import Foundation
 
+struct Card{
+	let rank: String
+	let score: ScoreType
+	
+	//Heart, Diamond, Spade, Club
+	enum ScoreType {
+		case H
+		case D
+		case S
+		case C
+	}
+}
+
 class Hand: NSObject{
 	
 	func bid() -> Int {
