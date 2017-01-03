@@ -15,6 +15,23 @@ class HandTests: XCTestCase {
 		super.setUp()
 	}
 	
+	func testCardsArrayExists(){
+		let hand = Hand()
+		let card = Card()
+		hand.cards.append(card)
+		XCTAssertNotNil(hand.cards)
+	}
+	
+	func testCardsInCardsArray(){
+		let hand = Hand()
+		let card = Card()
+		card.rank = .Ace
+		card.suit = .Heart
+		hand.cards.append(card)
+		XCTAssertTrue(hand.cards.contains { $0.suit == card.suit })
+		XCTAssertTrue(hand.cards.contains { $0.rank == card.rank })
+	}
+	
 	func testBid() {
 		let hand = Hand()
 		let bid = hand.bid()

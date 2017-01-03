@@ -9,6 +9,7 @@
 import Foundation
 
 class Hand: NSObject{
+	var cards = [Card]()
 	
 	func bid() -> Int {
 		return 0

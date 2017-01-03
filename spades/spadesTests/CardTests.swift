@@ -21,20 +21,20 @@ class CardTests: XCTestCase {
 	
 	func testThatCardHasScore()
 	{
-		card.score = .Heart
-		XCTAssertEqual(card.score, .Heart, "A card should always have a score")
+		card.suit = .Heart
+		XCTAssertEqual(card.suit, .Heart, "A card should always have a suit")
 	}
 	
 	func testThatScoreIsLimitedToType()
 	{
-		card.score = .Heart
-		XCTAssertEqual(card.score, .Heart, "Heart is a correct card suit")
-		card.score = .Diamond
-		XCTAssertEqual(card.score, .Diamond, "Diamond is a correct card suit")
-		card.score = .Spade
-		XCTAssertEqual(card.score, .Spade, "Spade is a correct card suit")
-		card.score = .Club
-		XCTAssertEqual(card.score, .Club, "Club is a correct card suit")
+		card.suit = .Heart
+		XCTAssertEqual(card.suit, .Heart, "Heart is a correct card suit")
+		card.suit = .Diamond
+		XCTAssertEqual(card.suit, .Diamond, "Diamond is a correct card suit")
+		card.suit = .Spade
+		XCTAssertEqual(card.suit, .Spade, "Spade is a correct card suit")
+		card.suit = .Club
+		XCTAssertEqual(card.suit, .Club, "Club is a correct card suit")
 	}
 	
 	func testThatRankIsLimitedToType()

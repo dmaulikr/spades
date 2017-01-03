@@ -10,9 +10,9 @@ import Foundation
 
 class Card: NSObject{
 	var	rank: RankType?
-	var score: ScoreType?
+	var suit: SuitType?
 	
-	enum ScoreType {
+	enum SuitType {
 		case Heart
 		case Diamond
 		case Spade
