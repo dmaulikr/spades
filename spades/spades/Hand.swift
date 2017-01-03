@@ -9,16 +9,32 @@
 import Foundation
 
 struct Card{
-	let rank: String
+	let rank: RankType
 	let score: ScoreType
 	
-	//Heart, Diamond, Spade, Club
 	enum ScoreType {
-		case H
-		case D
-		case S
-		case C
+		case Heart
+		case Diamond
+		case Spade
+		case Club
 	}
+	
+	enum RankType {
+		case Ace
+		case King
+		case Queen
+		case Jack
+		case Ten
+		case Nine
+		case Eight
+		case Seven
+		case Six
+		case Five
+		case Four
+		case Three
+		case Two
+	}
+	
 }
 
 class Hand: NSObject{
