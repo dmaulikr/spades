@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B91DAE1E1C4E7500D4EF5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B91DAD1E1C4E7500D4EF5C /* Card.swift */; };
+		38B91DB01E1C4EE000D4EF5C /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B91DAF1E1C4EE000D4EF5C /* CardTests.swift */; };
 		38B9DFB81E030BB4000D6667 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B9DFB71E030BB4000D6667 /* AppDelegate.swift */; };
 		38B9DFBA1E030BB4000D6667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B9DFB91E030BB4000D6667 /* Assets.xcassets */; };
 		38B9DFBD1E030BB4000D6667 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38B9DFBB1E030BB4000D6667 /* MainMenu.xib */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38B91DAD1E1C4E7500D4EF5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		38B91DAF1E1C4EE000D4EF5C /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		38B9DFB41E030BB4000D6667 /* spades.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spades.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B9DFB71E030BB4000D6667 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B9DFB91E030BB4000D6667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				38B9DFBB1E030BB4000D6667 /* MainMenu.xib */,
 				38B9DFBE1E030BB4000D6667 /* Info.plist */,
 				38B9DFD21E0310BC000D6667 /* Hand.swift */,
+				38B91DAD1E1C4E7500D4EF5C /* Card.swift */,
 			);
 			path = spades;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			children = (
 				38B9DFC91E030BB4000D6667 /* Info.plist */,
 				38B9DFD61E0314A8000D6667 /* HandTests.swift */,
+				38B91DAF1E1C4EE000D4EF5C /* CardTests.swift */,
 			);
 			path = spadesTests;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38B9DFD31E0310BC000D6667 /* Hand.swift in Sources */,
+				38B91DAE1E1C4E7500D4EF5C /* Card.swift in Sources */,
 				38B9DFB81E030BB4000D6667 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38B9DFD71E0314A8000D6667 /* HandTests.swift in Sources */,
+				38B91DB01E1C4EE000D4EF5C /* CardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +407,7 @@
 				38B9DFCE1E030BB4000D6667 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38B9DFCF1E030BB4000D6667 /* Build configuration list for PBXNativeTarget "spadesTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +416,7 @@
 				38B9DFD11E030BB4000D6667 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
