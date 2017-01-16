@@ -12,6 +12,27 @@ class Hand: NSObject{
 	var cards = [Card]()
 	
 	func bid() -> Int {
-		return 0
+        if(cards.count == 0)
+        {
+            return 0
+        }
+        if areAllCardsSpades(){
+            return 13
+        }
+        else{
+            return 0
+        }
 	}
+    
+    /**
+     Requires the cards array to have more than 1 card
+     */
+    func areAllCardsSpades() -> Bool {
+        for card in cards {
+            if card.suit == .Spade {
+                return false
+            }
+        }
+        return true
+    }
 }
