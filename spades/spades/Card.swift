@@ -9,8 +9,8 @@
 import Foundation
 
 class Card: NSObject{
-	var	rank: RankType?
-	var suit: SuitType?
+	let	rank: RankType
+	let suit: SuitType
 	
 	enum SuitType {
 		case Heart
@@ -35,4 +35,8 @@ class Card: NSObject{
 		case Two
 	}
 	
+    init(rank:RankType, suit:SuitType) {
+        self.rank = rank
+        self.suit = suit
+    }
 }

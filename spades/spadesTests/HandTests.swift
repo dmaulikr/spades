@@ -17,16 +17,14 @@ class HandTests: XCTestCase {
 	
 	func testCardsArrayExists(){
 		let hand = Hand()
-		let card = Card()
+        let card = Card(rank:.Ace, suit:.Heart)
 		hand.cards.append(card)
 		XCTAssertNotNil(hand.cards)
 	}
 	
 	func testCardsInCardsArray(){
 		let hand = Hand()
-		let card = Card()
-		card.rank = .Ace
-		card.suit = .Heart
+		let card = Card(rank:.Ace, suit:.Heart)
 		hand.cards.append(card)
 		XCTAssertTrue(hand.cards.contains { $0.suit == card.suit })
 		XCTAssertTrue(hand.cards.contains { $0.rank == card.rank })

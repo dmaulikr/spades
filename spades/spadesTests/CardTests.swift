@@ -11,59 +11,40 @@ import XCTest
 
 class CardTests: XCTestCase {
 	
-	let card = Card()
-	
 	func testThatCardHasRank()
 	{
-		card.rank = .Ace
+        let card = Card(rank: .Ace, suit: .Club)
 		XCTAssertEqual(card.rank, .Ace, "A card should always have a rank")
 	}
 	
 	func testThatCardHasScore()
 	{
-		card.suit = .Heart
+		let card = Card(rank: .Ace, suit: .Heart)
 		XCTAssertEqual(card.suit, .Heart, "A card should always have a suit")
 	}
 	
 	func testThatScoreIsLimitedToType()
 	{
-		card.suit = .Heart
-		XCTAssertEqual(card.suit, .Heart, "Heart is a correct card suit")
-		card.suit = .Diamond
-		XCTAssertEqual(card.suit, .Diamond, "Diamond is a correct card suit")
-		card.suit = .Spade
-		XCTAssertEqual(card.suit, .Spade, "Spade is a correct card suit")
-		card.suit = .Club
-		XCTAssertEqual(card.suit, .Club, "Club is a correct card suit")
+		XCTAssertEqual(Card(rank: .Ace, suit: .Heart).suit, .Heart, "Heart is a correct card suit")
+        XCTAssertEqual(Card(rank: .Ace, suit: .Diamond).suit, .Diamond, "Diamond is a correct card suit")
+        XCTAssertEqual(Card(rank: .Ace, suit: .Spade).suit, .Spade, "Spade is a correct card suit")
+        XCTAssertEqual(Card(rank: .Ace, suit: .Club).suit, .Club, "Club is a correct card suit")
 	}
 	
 	func testThatRankIsLimitedToType()
 	{
-		card.rank = .Ace
-		XCTAssertEqual(card.rank, .Ace, "Ace is a correct card rank")
-		card.rank = .King
-		XCTAssertEqual(card.rank, .King, "King is a correct card rank")
-		card.rank = .Queen
-		XCTAssertEqual(card.rank, .Queen, "Queen is a correct card rank")
-		card.rank = .Jack
-		XCTAssertEqual(card.rank, .Jack, "Jack is a correct card rank")
-		card.rank = .Ten
-		XCTAssertEqual(card.rank, .Ten, "Ten is a correct card rank")
-		card.rank = .Nine
-		XCTAssertEqual(card.rank, .Nine, "Nine is a correct card rank")
-		card.rank = .Eight
-		XCTAssertEqual(card.rank, .Eight, "Eight is a correct card rank")
-		card.rank = .Seven
-		XCTAssertEqual(card.rank, .Seven, "Seven is a correct card rank")
-		card.rank = .Six
-		XCTAssertEqual(card.rank, .Six, "Six is a correct card rank")
-		card.rank = .Five
-		XCTAssertEqual(card.rank, .Five, "Five is a correct card rank")
-		card.rank = .Four
-		XCTAssertEqual(card.rank, .Four, "Four is a correct card rank")
-		card.rank = .Three
-		XCTAssertEqual(card.rank, .Three, "Three is a correct card rank")
-		card.rank = .Two
-		XCTAssertEqual(card.rank, .Two, "Two is a correct card rank")
-	}
+        XCTAssertEqual(Card(rank: .Ace, suit: .Heart).rank, .Ace, "Ace is a correct card rank")
+        XCTAssertEqual(Card(rank: .King, suit: .Heart).rank, .King, "King is a correct card rank")
+        XCTAssertEqual(Card(rank: .Queen, suit: .Heart).rank, .Queen, "Queen is a correct card rank")
+        XCTAssertEqual(Card(rank: .Jack, suit: .Heart).rank, .Jack, "Jack is a correct card rank")
+        XCTAssertEqual(Card(rank: .Ten, suit: .Heart).rank, .Ten, "Ten is a correct card rank")
+        XCTAssertEqual(Card(rank: .Nine, suit: .Heart).rank, .Nine, "Nine is a correct card rank")
+        XCTAssertEqual(Card(rank: .Eight, suit: .Heart).rank, .Eight, "Eight is a correct card rank")
+        XCTAssertEqual(Card(rank: .Seven, suit: .Heart).rank, .Seven, "Seven is a correct card rank")
+        XCTAssertEqual(Card(rank: .Six, suit: .Heart).rank, .Six, "Six is a correct card rank")
+        XCTAssertEqual(Card(rank: .Five, suit: .Heart).rank, .Five, "Five is a correct card rank")
+        XCTAssertEqual(Card(rank: .Four, suit: .Heart).rank, .Four, "Four is a correct card rank")
+        XCTAssertEqual(Card(rank: .Three, suit: .Heart).rank, .Three, "Three is a correct card rank")
+        XCTAssertEqual(Card(rank: .Two, suit: .Heart).rank, .Two, "Two is a correct card rank")
+    }
 }
