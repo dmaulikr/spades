@@ -53,5 +53,18 @@ class Hand: NSObject{
 		}
 		return spadeCountInCards
 	}
+	
+	/**
+	*/
+	func suitArray(ofSuitType:Card.SuitType) -> [Card] {
+		let cardArray = [Card]()
+		return cardArray
+	}
+	
+	/**
+	*/
+	func highestRank(inSuitType:Card.SuitType) -> Card.RankType {
+		return .Ace
+	}
 
 }
