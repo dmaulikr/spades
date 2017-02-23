@@ -29,10 +29,29 @@ class Hand: NSObject{
      */
     func areAllCardsSpades() -> Bool {
         for card in cards {
-            if card.suit == .Spade {
+            if card.suit != .Spade {
                 return false
             }
         }
         return true
     }
+	
+	/**
+	*/
+	func spadeScore() -> Int {
+		return 0
+	}
+	
+	/**
+	*/
+	func spadeCount() -> Int {
+		var spadeCountInCards = 0
+		for card in cards{
+			if card.suit == .Spade{
+				spadeCountInCards += 1
+			}
+		}
+		return spadeCountInCards
+	}
+
 }

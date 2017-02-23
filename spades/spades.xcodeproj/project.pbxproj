@@ -149,6 +149,7 @@
 				TargetAttributes = {
 					38B9DFB31E030BB4000D6667 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8484QQV5PA;
 						ProvisioningStyle = Automatic;
 					};
 					38B9DFC21E030BB4000D6667 = {
@@ -333,7 +334,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8484QQV5PA;
 				INFOPLIST_FILE = spades/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = practice.spades;
@@ -346,7 +349,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8484QQV5PA;
 				INFOPLIST_FILE = spades/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = practice.spades;
