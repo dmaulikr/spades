@@ -57,7 +57,14 @@ class Hand: NSObject{
 	/**
 	*/
 	func suitArray(ofSuitType:Card.SuitType) -> [Card] {
-		let cardArray = [Card]()
+		var cardArray = [Card]()
+		for card in cards
+		{
+			if card.suit == ofSuitType
+			{
+				cardArray.append(card)
+			}
+		}
 		return cardArray
 	}
 	
@@ -65,6 +72,30 @@ class Hand: NSObject{
 	*/
 	func highestRank(inSuitType:Card.SuitType) -> Card.RankType {
 		return .Ace
+	}
+	
+	/**
+	For now, assumes the same order for hands
+	*/
+	func compareToHand(originalHand:[Card], comparisonHand:[Card]) -> Bool {
+		var index = 0
+		let comparisonHandCount = comparisonHand.count
+		for card1 in originalHand {
+			if(comparisonHandCount > index)
+			{
+				let comparisonHandCard = comparisonHand[index]
+				if !card1.compareToCard(comparisonCard: comparisonHandCard)
+				{
+					return false
+				}
+				index += 1
+			}
+			else
+			{
+				return true
+			}
+		}
+		return true
 	}
 
 }

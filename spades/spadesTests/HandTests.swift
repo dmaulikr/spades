@@ -117,6 +117,24 @@ class HandTests: XCTestCase {
 		XCTAssertEqual(hand5.spadeCount(), 3)
 	}
 	
+	func testCompareToHand(){
+		let hand3 = Hand()
+		hand3.cards.append(Card(rank: .Ten, suit: .Club))
+		hand3.cards.append(Card(rank: .Nine, suit: .Spade))
+		hand3.cards.append(Card(rank: .Three, suit: .Diamond))
+		hand3.cards.append(Card(rank: .Ten, suit: .Heart))
+		hand3.cards.append(Card(rank: .Five, suit: .Spade))
+		hand3.cards.append(Card(rank: .Three, suit: .Spade))
+		var comparisonHandArray = [Card]()
+		comparisonHandArray.append(Card(rank: .Ten, suit: .Club))
+		comparisonHandArray.append(Card(rank: .Nine, suit: .Spade))
+		comparisonHandArray.append(Card(rank: .Three, suit: .Diamond))
+		comparisonHandArray.append(Card(rank: .Ten, suit: .Heart))
+		comparisonHandArray.append(Card(rank: .Five, suit: .Spade))
+		comparisonHandArray.append(Card(rank: .Three, suit: .Spade))
+		XCTAssertTrue(hand3.compareToHand(originalHand:hand3.cards, comparisonHand: comparisonHandArray))
+	}
+	
 	func testSuitArray(){
 		let hand3 = Hand()
 		hand3.cards.append(Card(rank: .Ten, suit: .Club))
@@ -125,11 +143,13 @@ class HandTests: XCTestCase {
 		hand3.cards.append(Card(rank: .Ten, suit: .Heart))
 		hand3.cards.append(Card(rank: .Five, suit: .Spade))
 		hand3.cards.append(Card(rank: .Three, suit: .Spade))
-		var comparisonHand = [Card]()
-		comparisonHand.append(Card(rank: .Nine, suit: .Spade))
-		comparisonHand.append(Card(rank: .Five, suit: .Spade))
-		comparisonHand.append(Card(rank: .Three, suit: .Spade))
-		XCTAssertEqual(hand3.suitArray(ofSuitType:.Spade), comparisonHand)
+		let suitArray = hand3.suitArray(ofSuitType: .Spade)
+		
+		var comparisonHandArray = [Card]()
+		comparisonHandArray.append(Card(rank: .Nine, suit: .Spade))
+		comparisonHandArray.append(Card(rank: .Five, suit: .Spade))
+		comparisonHandArray.append(Card(rank: .Three, suit: .Spade))
+		XCTAssertTrue(hand3.compareToHand(originalHand:suitArray, comparisonHand: comparisonHandArray))
 	}
 	
 	func testHighestRank() {
