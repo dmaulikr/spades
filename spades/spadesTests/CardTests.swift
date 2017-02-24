@@ -47,4 +47,23 @@ class CardTests: XCTestCase {
         XCTAssertEqual(Card(rank: .Three, suit: .Heart).rank, .Three, "Three is a correct card rank")
         XCTAssertEqual(Card(rank: .Two, suit: .Heart).rank, .Two, "Two is a correct card rank")
     }
+	
+	
+	func testCompareTwoCards(){
+		let hand1 = Card(rank: .Ten, suit: .Club)
+		let hand2 = Card(rank: .Ten, suit: .Club)
+		XCTAssertTrue(hand1.compareToCard(comparisonCard:hand2))
+		
+		let hand3 = Card(rank: .Ten, suit: .Spade)
+		let hand4 = Card(rank: .Ten, suit: .Club)
+		XCTAssertFalse(hand3.compareToCard(comparisonCard:hand4))
+		
+		let hand5 = Card(rank: .Nine, suit: .Club)
+		let hand6 = Card(rank: .Ten, suit: .Club)
+		XCTAssertFalse(hand5.compareToCard(comparisonCard:hand6))
+		
+		let hand7 = Card(rank: .Ace, suit: .Heart)
+		let hand8 = Card(rank: .Two, suit: .Diamond)
+		XCTAssertFalse(hand7.compareToCard(comparisonCard:hand8))
+	}
 }

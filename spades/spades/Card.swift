@@ -12,7 +12,7 @@ class Card: NSObject{
 	let	rank: RankType
 	let suit: SuitType
 	
-	enum SuitType {
+	enum SuitType: Int {
 		case Heart
 		case Diamond
 		case Spade
@@ -39,4 +39,76 @@ class Card: NSObject{
         self.rank = rank
         self.suit = suit
     }
+	
+	/**
+	@brief Returns the numerical power of the card rank
+	*/
+	func rankScore() -> NSInteger
+	{
+		var returnScore = -1;
+		
+		switch self.rank
+		{
+		case .Ace:
+			returnScore = 14
+		case .King:
+			returnScore = 13
+		case .Queen:
+			returnScore = 12
+		case .Jack:
+			returnScore = 11
+		case .Ten:
+			returnScore = 10
+		case .Nine:
+			returnScore = 9
+		case .Eight:
+			returnScore = 8
+		case .Seven:
+			returnScore = 7
+		case .Six:
+			returnScore = 6
+		case .Five:
+			returnScore = 5
+		case .Four:
+			returnScore = 4
+		case .Three:
+			returnScore = 3
+		case .Two:
+			returnScore = 2
+		}
+		return returnScore
+	}
+	
+	/**
+	@brief Returns the numerical power of the card suit
+	*/
+	func suitScore() -> NSInteger
+	{
+		var returnScore = -1;
+		
+		switch self.suit
+		{
+		case .Heart:
+			returnScore = 1
+		case .Diamond:
+			returnScore = 2
+		case .Spade:
+			returnScore = 3
+		case .Club:
+			returnScore = 4
+		}
+		return returnScore
+	}
+	
+	func compareToCard(comparisonCard:Card) -> Bool
+	{
+		let ranksEqual = rankScore() == comparisonCard.rankScore()
+		let suitsEqual = suitScore() == comparisonCard.suitScore()
+		if ranksEqual && suitsEqual
+		{
+			return true
+		}
+		return false
+	}
+
 }
