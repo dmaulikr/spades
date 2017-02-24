@@ -71,7 +71,17 @@ class Hand: NSObject{
 	/**
 	*/
 	func highestRank(inSuitType:Card.SuitType) -> Card.RankType {
-		return .Ace
+		let cardsOfSuit = suitArray(ofSuitType: inSuitType)
+		let twoCard = Card(rank: .Two, suit: inSuitType)
+		var highestCardRank = twoCard.rankScore()
+		for card in cardsOfSuit
+		{
+			if card.rankScore() > highestCardRank
+			{
+				highestCardRank = card.rankScore()
+			}
+		}
+		return twoCard.rankForScore(score: highestCardRank)
 	}
 	
 	/**
