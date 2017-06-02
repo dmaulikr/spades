@@ -39,7 +39,58 @@ class Hand: NSObject{
 	/**
 	*/
 	func spadeScore() -> Int {
-		return 0
+		return self.spadeCount();
+	}
+	
+	/**
+	Calculates the number of spade leads we have.  Ace always counts as 1.  King counts as 1 if there's at least 1 spade, otherwise 0.  Queen counts as 1 if there's at least 2 other spades and so on
+	*/
+	func spadeLeads() -> Int {
+		let spadeCount = self.spadeCount()
+		var spadeLeads = 0
+		for card in self.suitArray(ofSuitType:.Spade)
+		{
+			if card.rank == .Ace{
+				spadeLeads += 1
+			}
+			if card.rank == .King && spadeCount >= 2{
+				spadeLeads += 1
+			}
+			if card.rank == .Queen && spadeCount >= 3{
+				spadeLeads += 1
+			}
+			if card.rank == .Jack && spadeCount >= 4{
+				spadeLeads += 1
+			}
+			if card.rank == .Ten && spadeCount >= 5{
+				spadeLeads += 1
+			}
+			if card.rank == .Nine && spadeCount >= 6{
+				spadeLeads += 1
+			}
+			if card.rank == .Eight && spadeCount >= 7{
+				spadeLeads += 1
+			}
+			if card.rank == .Seven && spadeCount >= 8{
+				spadeLeads += 1
+			}
+			if card.rank == .Six && spadeCount >= 9{
+				spadeLeads += 1
+			}
+			if card.rank == .Five && spadeCount >= 10{
+				spadeLeads += 1
+			}
+			if card.rank == .Four && spadeCount >= 11{
+				spadeLeads += 1
+			}
+			if card.rank == .Three && spadeCount >= 12{
+				spadeLeads += 1
+			}
+			if card.rank == .Two && spadeCount >= 13{
+				spadeLeads += 1
+			}
+		}
+		return spadeLeads
 	}
 	
 	/**
@@ -55,6 +106,7 @@ class Hand: NSObject{
 	}
 	
 	/**
+	 Returns all the cards in the hand of the suit type
 	*/
 	func suitArray(ofSuitType:Card.SuitType) -> [Card] {
 		var cardArray = [Card]()
