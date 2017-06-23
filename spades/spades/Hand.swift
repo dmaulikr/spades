@@ -39,7 +39,39 @@ class Hand: NSObject{
 	/**
 	*/
 	func spadeScore() -> Int {
-		return self.spadeCount();
+		var spadeScore = spadeLeads()
+		
+		if(spadeLeads() == 0)
+		{
+			if(spadeCount() == 4)
+			{
+				return 1
+			}
+			else if(spadeCount() == 5)
+			{
+				return 2
+			}
+			else if(spadeCount() == 6 || spadeCount() == 7)
+			{
+				return 3;
+			}
+		}
+		
+		
+		let remainingSpades = spadeCount() - spadeLeads()
+		if spadeCount() >= 4 {
+			if((remainingSpades == 2 && spadeCount() > 2 ) || (remainingSpades == 3 &&  spadeCount() > 3)){
+				spadeScore += 1
+			}
+			else if((remainingSpades == 4 && spadeCount() > 4 ) || (remainingSpades == 5 &&  spadeCount() > 5)){
+				spadeScore += 2
+			}
+			else if((remainingSpades == 6 && spadeCount() > 6 ) || (remainingSpades == 7 &&  spadeCount() > 7)){
+				spadeScore += 3
+			}
+		}
+
+		return spadeScore
 	}
 	
 	/**
