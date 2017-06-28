@@ -91,6 +91,14 @@ class HandTests: XCTestCase {
 		hand10.cards.append(Card(rank: .Jack, suit: .Spade))
 		hand10.cards.append(Card(rank: .Two, suit: .Spade))
 		XCTAssertEqual(hand10.spadeScore(), 3)
+		
+		let hand11 = Hand()
+		hand11.cards.append(Card(rank: .Ace, suit: .Spade))
+		hand11.cards.append(Card(rank: .Eight, suit: .Spade))
+		hand11.cards.append(Card(rank: .Five, suit: .Spade))
+		hand11.cards.append(Card(rank: .Four, suit: .Spade))
+		hand11.cards.append(Card(rank: .Three, suit: .Spade))
+		XCTAssertEqual(hand11.spadeScore(), 3)
     }
 	
 	func testSpadeLeads() {

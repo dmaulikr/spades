@@ -23,7 +23,66 @@ class Hand: NSObject{
             return 0
         }
 	}
-    
+
+// MARK: Helper methods
+	
+	/**
+	Returns all the cards in the hand of the suit type
+	*/
+	func suitArray(ofSuitType:Card.SuitType) -> [Card] {
+		var cardArray = [Card]()
+		for card in cards
+		{
+			if card.suit == ofSuitType
+			{
+				cardArray.append(card)
+			}
+		}
+		return cardArray
+	}
+	
+	/**
+	*/
+	func highestRank(inSuitType:Card.SuitType) -> Card.RankType {
+		let cardsOfSuit = suitArray(ofSuitType: inSuitType)
+		let twoCard = Card(rank: .Two, suit: inSuitType)
+		var highestCardRank = twoCard.rankScore()
+		for card in cardsOfSuit
+		{
+			if card.rankScore() > highestCardRank
+			{
+				highestCardRank = card.rankScore()
+			}
+		}
+		return twoCard.rankForScore(score: highestCardRank)
+	}
+	
+	/**
+	For now, assumes the same order for hands
+	*/
+	func compareToHand(originalHand:[Card], comparisonHand:[Card]) -> Bool {
+		var index = 0
+		let comparisonHandCount = comparisonHand.count
+		for card1 in originalHand {
+			if(comparisonHandCount > index)
+			{
+				let comparisonHandCard = comparisonHand[index]
+				if !card1.compareToCard(comparisonCard: comparisonHandCard)
+				{
+					return false
+				}
+				index += 1
+			}
+			else
+			{
+				return true
+			}
+		}
+		return true
+	}
+	
+// MARK: Spade bid methods
+	
     /**
      Requires the cards array to have more than 1 card
      */
@@ -136,60 +195,4 @@ class Hand: NSObject{
 		}
 		return spadeCountInCards
 	}
-	
-	/**
-	 Returns all the cards in the hand of the suit type
-	*/
-	func suitArray(ofSuitType:Card.SuitType) -> [Card] {
-		var cardArray = [Card]()
-		for card in cards
-		{
-			if card.suit == ofSuitType
-			{
-				cardArray.append(card)
-			}
-		}
-		return cardArray
-	}
-	
-	/**
-	*/
-	func highestRank(inSuitType:Card.SuitType) -> Card.RankType {
-		let cardsOfSuit = suitArray(ofSuitType: inSuitType)
-		let twoCard = Card(rank: .Two, suit: inSuitType)
-		var highestCardRank = twoCard.rankScore()
-		for card in cardsOfSuit
-		{
-			if card.rankScore() > highestCardRank
-			{
-				highestCardRank = card.rankScore()
-			}
-		}
-		return twoCard.rankForScore(score: highestCardRank)
-	}
-	
-	/**
-	For now, assumes the same order for hands
-	*/
-	func compareToHand(originalHand:[Card], comparisonHand:[Card]) -> Bool {
-		var index = 0
-		let comparisonHandCount = comparisonHand.count
-		for card1 in originalHand {
-			if(comparisonHandCount > index)
-			{
-				let comparisonHandCard = comparisonHand[index]
-				if !card1.compareToCard(comparisonCard: comparisonHandCard)
-				{
-					return false
-				}
-				index += 1
-			}
-			else
-			{
-				return true
-			}
-		}
-		return true
-	}
-
 }
