@@ -12,16 +12,7 @@ class Hand: NSObject{
 	var cards = [Card]()
 	
 	func bid() -> Int {
-        if(cards.count == 0)
-        {
-            return 0
-        }
-        if areAllCardsSpades(){
-            return 13
-        }
-        else{
-            return 0
-        }
+		return spadeScore()
 	}
 
 // MARK: Helper methods

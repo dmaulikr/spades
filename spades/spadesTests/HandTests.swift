@@ -29,6 +29,24 @@ class HandTests: XCTestCase {
 		XCTAssertTrue(hand.cards.contains { $0.suit == card.suit })
 		XCTAssertTrue(hand.cards.contains { $0.rank == card.rank })
 	}
+	
+	func testBid(){
+		let hand1 = Hand()
+		hand1.cards.append(Card(rank: .Ace, suit: .Heart))
+		hand1.cards.append(Card(rank: .Queen, suit: .Heart))
+		hand1.cards.append(Card(rank: .Nine, suit: .Heart))
+		hand1.cards.append(Card(rank: .Two, suit: .Heart))
+		hand1.cards.append(Card(rank: .King, suit: .Spade))
+		hand1.cards.append(Card(rank: .Ten, suit: .Spade))
+		hand1.cards.append(Card(rank: .Six, suit: .Spade))
+		hand1.cards.append(Card(rank: .Four, suit: .Spade))
+		hand1.cards.append(Card(rank: .Queen, suit: .Diamond))
+		hand1.cards.append(Card(rank: .Four, suit: .Diamond))
+		hand1.cards.append(Card(rank: .Three, suit: .Diamond))
+		hand1.cards.append(Card(rank: .Seven, suit: .Club))
+		hand1.cards.append(Card(rank: .Five, suit: .Club))
+		XCTAssertEqual(hand1.bid(), 3)
+	}
     
     func testSpadeScore() {
         let hand1 = Hand()
