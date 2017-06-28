@@ -15,7 +15,7 @@ class Hand: NSObject{
 	Returns all the cards in the hand of the suit type
 	*/
 	func bid() -> Int {
-		return spadeScore()
+		return 0
 	}
 
 // MARK: Helper methods
