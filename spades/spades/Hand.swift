@@ -17,6 +17,36 @@ class Hand: NSObject{
 	func bid() -> Int {
 		return 0
 	}
+	
+	/**
+	*/
+	func spadesAllowZero() -> Bool {
+//		if(spadeCount() > 3)
+//		{
+//			return false
+//		}
+//		let spadeArray = suitArray(ofSuitType: .Spade)
+//		for card in spadeArray {
+//			if (card.rank == .Ace || card.rank == .King)
+//			{
+//				return false;
+//			}
+//		}
+		return true
+	}
+	
+	/**
+	*/
+	func otherSuitsAllowZero() -> Bool {
+		return true
+	}
+	
+	/**
+	Bidding zero and successfully getting zero points gives an extra 100 points, so this tests if the 0 is possible
+	*/
+	func shouldBidZero() -> Bool {
+		return false
+	}
 
 // MARK: Helper methods
 	
