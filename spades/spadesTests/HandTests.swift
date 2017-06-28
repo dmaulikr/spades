@@ -69,7 +69,7 @@ class HandTests: XCTestCase {
 		hand4.cards.append(Card(rank: .Ace, suit: .Spade))
 		hand4.cards.append(Card(rank: .King, suit: .Spade))
 		hand4.cards.append(Card(rank: .Queen, suit: .Spade))
-		XCTAssertThrowsError(hand4.nonSpadeSuitScore(ofSuitType:.Spade))
+		XCTAssertEqual(hand4.nonSpadeSuitScore(ofSuitType:.Spade), 0)
 		
 		let hand5 = Hand()
 		hand5.cards.append(Card(rank: .Ace, suit: .Club))
