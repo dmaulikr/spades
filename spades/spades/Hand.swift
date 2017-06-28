@@ -11,6 +11,14 @@ import Foundation
 class Hand: NSObject{
 	var cards = [Card]()
 	
+	enum VendingMachineError: Error {
+		case nonSpadeMethod
+		case spadeMethod
+	}
+	
+	/**
+	Returns all the cards in the hand of the suit type
+	*/
 	func bid() -> Int {
 		return spadeScore()
 	}
@@ -70,6 +78,16 @@ class Hand: NSObject{
 			}
 		}
 		return true
+	}
+	
+// MARK: Non Spade bid methods
+	
+	/**
+	Returns the score for the cards in this hand of the passed in suit type
+	*/
+	func nonSpadeSuitScore(ofSuitType:Card.SuitType) -> Int {
+		
+		return 0
 	}
 	
 // MARK: Spade bid methods

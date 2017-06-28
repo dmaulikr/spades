@@ -47,6 +47,41 @@ class HandTests: XCTestCase {
 		hand1.cards.append(Card(rank: .Five, suit: .Club))
 		XCTAssertEqual(hand1.bid(), 3)
 	}
+	
+	func testNonSpadeSuitScore(){
+		let hand1 = Hand()
+		hand1.cards.append(Card(rank: .Ace, suit: .Heart))
+		hand1.cards.append(Card(rank: .Queen, suit: .Heart))
+		hand1.cards.append(Card(rank: .Nine, suit: .Heart))
+		hand1.cards.append(Card(rank: .Two, suit: .Heart))
+		XCTAssertEqual(hand1.nonSpadeSuitScore(ofSuitType:.Heart), 1)
+		
+		let hand2 = Hand()
+		hand2.cards.append(Card(rank: .Seven, suit: .Heart))
+		XCTAssertEqual(hand2.nonSpadeSuitScore(ofSuitType:.Heart), 0)
+		
+		let hand3 = Hand()
+		hand3.cards.append(Card(rank: .Jack, suit: .Diamond))
+		hand3.cards.append(Card(rank: .Two, suit: .Diamond))
+		XCTAssertEqual(hand3.nonSpadeSuitScore(ofSuitType:.Diamond), 0)
+		
+		let hand4 = Hand()
+		hand4.cards.append(Card(rank: .Ace, suit: .Spade))
+		hand4.cards.append(Card(rank: .King, suit: .Spade))
+		hand4.cards.append(Card(rank: .Queen, suit: .Spade))
+		XCTAssertThrowsError(hand4.nonSpadeSuitScore(ofSuitType:.Spade))
+		
+		let hand5 = Hand()
+		hand5.cards.append(Card(rank: .Ace, suit: .Club))
+		hand5.cards.append(Card(rank: .King, suit: .Club))
+		hand5.cards.append(Card(rank: .Ten, suit: .Club))
+		hand5.cards.append(Card(rank: .Nine, suit: .Club))
+		XCTAssertEqual(hand5.nonSpadeSuitScore(ofSuitType:.Club), 2)
+		
+		let hand6 = Hand()
+		hand6.cards.append(Card(rank: .King, suit: .Club))
+		XCTAssertEqual(hand6.nonSpadeSuitScore(ofSuitType:.Club), 0)
+	}
     
     func testSpadeScore() {
         let hand1 = Hand()
