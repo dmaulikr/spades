@@ -112,6 +112,113 @@ class HandTests: XCTestCase {
 		XCTAssertEqual(hand5.bid(), 0)
 	}
 	
+	func testShouldBidZero(){
+		let tooManySpades = Hand()
+		tooManySpades.cards.append(Card(rank: .Ten, suit: .Spade))
+		tooManySpades.cards.append(Card(rank: .Nine, suit: .Spade))
+		tooManySpades.cards.append(Card(rank: .Six, suit: .Spade))
+		tooManySpades.cards.append(Card(rank: .Four, suit: .Spade))
+		XCTAssertFalse(tooManySpades.shouldBidZero())
+		
+		let aceOfSpades = Hand()
+		aceOfSpades.cards.append(Card(rank: .Ace, suit: .Spade))
+		XCTAssertFalse(aceOfSpades.shouldBidZero())
+		
+		let kingOfSpades = Hand()
+		kingOfSpades.cards.append(Card(rank: .King, suit: .Spade))
+		XCTAssertFalse(kingOfSpades.shouldBidZero())
+		
+		//fails because there should be more than 2 spades if there's a Queen
+		let queenOfSpades = Hand()
+		queenOfSpades.cards.append(Card(rank: .Queen, suit: .Spade))
+		XCTAssertFalse(queenOfSpades.shouldBidZero())
+		
+		//fails because there should be more than 2 spades if there's a Queen
+		let queenOfSpades2 = Hand()
+		queenOfSpades2.cards.append(Card(rank: .Queen, suit: .Spade))
+		queenOfSpades2.cards.append(Card(rank: .Four, suit: .Spade))
+		XCTAssertFalse(queenOfSpades2.shouldBidZero())
+		
+		let queenOfSpades3 = Hand()
+		queenOfSpades3.cards.append(Card(rank: .Queen, suit: .Spade))
+		queenOfSpades3.cards.append(Card(rank: .Jack, suit: .Spade))
+		queenOfSpades3.cards.append(Card(rank: .Four, suit: .Spade))
+		XCTAssertFalse(queenOfSpades3.shouldBidZero())
+		
+		//fails because there should be more than 1 spade if there's a Jack
+		let jackOfSpades = Hand()
+		jackOfSpades.cards.append(Card(rank: .Jack, suit: .Spade))
+		XCTAssertFalse(jackOfSpades.shouldBidZero())
+		
+		//fails because there should be more than 3 other cards if there's an Ace
+		let aceWithNotEnoughOthers = Hand()
+		aceWithNotEnoughOthers.cards.append(Card(rank: .Ace, suit: .Club))
+		aceWithNotEnoughOthers.cards.append(Card(rank: .Four, suit: .Club))
+		aceWithNotEnoughOthers.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertFalse(aceWithNotEnoughOthers.shouldBidZero())
+		
+		//fails because there should be more than 4 other cards if there's an Ace and King
+		let aceWithKing = Hand()
+		aceWithKing.cards.append(Card(rank: .Ace, suit: .Club))
+		aceWithKing.cards.append(Card(rank: .King, suit: .Club))
+		aceWithKing.cards.append(Card(rank: .Four, suit: .Club))
+		aceWithKing.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertFalse(aceWithKing.shouldBidZero())
+		
+		//Not enough non leads
+		let tooManyLeads = Hand()
+		tooManyLeads.cards.append(Card(rank: .Ace, suit: .Club))
+		tooManyLeads.cards.append(Card(rank: .King, suit: .Club))
+		tooManyLeads.cards.append(Card(rank: .Queen, suit: .Club))
+		tooManyLeads.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertFalse(tooManyLeads.shouldBidZero())
+		
+		//A king requires 2 more non lead cards
+		let kingHand1 = Hand()
+		kingHand1.cards.append(Card(rank: .King, suit: .Club))
+		kingHand1.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertFalse(kingHand1.shouldBidZero())
+		
+		//A king requires 2 more non lead cards
+		let kingHand2 = Hand()
+		kingHand2.cards.append(Card(rank: .King, suit: .Club))
+		kingHand2.cards.append(Card(rank: .Queen, suit: .Club))
+		kingHand2.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertFalse(kingHand2.shouldBidZero())
+		
+		let hand5 = Hand()
+		hand5.cards.append(Card(rank: .Ten, suit: .Heart))
+		hand5.cards.append(Card(rank: .Seven, suit: .Heart))
+		hand5.cards.append(Card(rank: .Four, suit: .Heart))
+		hand5.cards.append(Card(rank: .Seven, suit: .Spade))
+		hand5.cards.append(Card(rank: .Five, suit: .Spade))
+		hand5.cards.append(Card(rank: .Three, suit: .Spade))
+		hand5.cards.append(Card(rank: .King, suit: .Diamond))
+		hand5.cards.append(Card(rank: .Queen, suit: .Diamond))
+		hand5.cards.append(Card(rank: .Seven, suit: .Diamond))
+		hand5.cards.append(Card(rank: .Five, suit: .Diamond))
+		hand5.cards.append(Card(rank: .Four, suit: .Diamond))
+		hand5.cards.append(Card(rank: .Nine, suit: .Club))
+		hand5.cards.append(Card(rank: .Seven, suit: .Club))
+		XCTAssertTrue(hand5.shouldBidZero())
+		
+		let hand6 = Hand()
+		hand6.cards.append(Card(rank: .Ace, suit: .Heart))
+		hand6.cards.append(Card(rank: .King, suit: .Heart))
+		hand6.cards.append(Card(rank: .Queen, suit: .Heart))
+		hand6.cards.append(Card(rank: .Ten, suit: .Heart))
+		hand6.cards.append(Card(rank: .Five, suit: .Heart))
+		hand6.cards.append(Card(rank: .Three, suit: .Heart))
+		hand6.cards.append(Card(rank: .Nine, suit: .Diamond))
+		hand6.cards.append(Card(rank: .Seven, suit: .Diamond))
+		hand6.cards.append(Card(rank: .Six, suit: .Diamond))
+		hand6.cards.append(Card(rank: .Ace, suit: .Club))
+		hand6.cards.append(Card(rank: .Ten, suit: .Club))
+		hand6.cards.append(Card(rank: .Seven, suit: .Club))
+		hand6.cards.append(Card(rank: .Three, suit: .Club))
+		XCTAssertTrue(hand6.shouldBidZero())
+	}
+	
 	func testNonSpadeSuitScore(){
 		let hand1 = Hand()
 		hand1.cards.append(Card(rank: .Ace, suit: .Heart))
