@@ -19,6 +19,11 @@ class Hand: NSObject{
 	}
 	
 	/**
+	-rules to implement
+		-spade count not more than 3
+		-no ace or king
+		-queen requires 2 more spades
+		-jack requires 1 more spade
 	*/
 	func spadesAllowZero() -> Bool {
 //		if(spadeCount() > 3)
@@ -36,6 +41,8 @@ class Hand: NSObject{
 	}
 	
 	/**
+	- If there's an ace, need at least 3 other cards.  If one card is a king, need at least 4 more cards
+	- if there's a king need at least 2 other cards (not face values)
 	*/
 	func otherSuitsAllowZero() -> Bool {
 		return true
