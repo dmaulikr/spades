@@ -22,21 +22,30 @@ class Hand: NSObject{
 	-rules to implement
 		-spade count not more than 3
 		-no ace or king
-		-queen requires 2 more spades
+		-queen requires 2 more spades, one can't be a jack though
 		-jack requires 1 more spade
 	*/
 	func spadesAllowZero() -> Bool {
-//		if(spadeCount() > 3)
-//		{
-//			return false
-//		}
-//		let spadeArray = suitArray(ofSuitType: .Spade)
-//		for card in spadeArray {
-//			if (card.rank == .Ace || card.rank == .King)
-//			{
-//				return false;
-//			}
-//		}
+		if(spadeCount() > 3)
+		{
+			return false
+		}
+		else if (cardInHand(specificCard: Card(rank: .Ace, suit: .Spade)) || cardInHand(specificCard: Card(rank: .King, suit: .Spade)))
+		{
+			return false;
+		}
+		else if (cardInHand(specificCard: Card(rank: .Queen, suit: .Spade)) && spadeCount() < 3)
+		{
+			return false;
+		}
+		else if (cardInHand(specificCard: Card(rank: .Queen, suit: .Spade)) && cardInHand(specificCard: Card(rank: .Jack, suit: .Spade)))
+		{
+			return false;
+		}
+		else if (cardInHand(specificCard: Card(rank: .Jack, suit: .Spade)) && spadeCount() < 2)
+		{
+			return false;
+		}
 		return true
 	}
 	
@@ -110,6 +119,18 @@ class Hand: NSObject{
 			}
 		}
 		return true
+	}
+	
+	/**
+	Checks whether a specific card exists in hand
+	*/
+	func cardInHand(specificCard:Card) -> Bool {
+		for card in cards {
+			if card.suit == specificCard.suit && card.rank == specificCard.rank  {
+				return true
+			}
+		}
+		return false;
 	}
 	
 // MARK: Non Spade bid methods
