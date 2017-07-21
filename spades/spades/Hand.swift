@@ -15,7 +15,14 @@ class Hand: NSObject{
 	Returns all the cards in the hand of the suit type
 	*/
 	func bid() -> Int {
-		return 0
+		if(shouldBidZero())
+		{
+			return 0
+		}
+		else
+		{
+			return spadeScore() + nonSpadeSuitScore(ofSuitType: .Club) + nonSpadeSuitScore(ofSuitType: .Diamond) + nonSpadeSuitScore(ofSuitType: .Heart)
+		}
 	}
 	
 	/**
@@ -72,7 +79,7 @@ class Hand: NSObject{
 			{
 				return false
 			}
-			else if (cardInHand(specificCard: Card(rank: .Queen, suit: suitType)) || cardInHand(specificCard: Card(rank: .Jack, suit: suitType)))
+			else if ((cardInHand(specificCard: Card(rank: .Queen, suit: suitType)) || cardInHand(specificCard: Card(rank: .Jack, suit: suitType))) && suitTypeCount < 4)
 			{
 				return false
 			}
@@ -85,7 +92,7 @@ class Hand: NSObject{
 	Bidding zero and successfully getting zero points gives an extra 100 points, so this tests if the 0 is possible
 	*/
 	func shouldBidZero() -> Bool {
-		return false
+		return (spadesAllowZero() && otherSuitsAllowZero(suitType: .Club) && otherSuitsAllowZero(suitType: .Diamond) && otherSuitsAllowZero(suitType: .Heart))
 	}
 
 // MARK: Helper methods
