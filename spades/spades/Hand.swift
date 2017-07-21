@@ -32,19 +32,19 @@ class Hand: NSObject{
 		}
 		else if (cardInHand(specificCard: Card(rank: .Ace, suit: .Spade)) || cardInHand(specificCard: Card(rank: .King, suit: .Spade)))
 		{
-			return false;
+			return false
 		}
 		else if (cardInHand(specificCard: Card(rank: .Queen, suit: .Spade)) && spadeCount() < 3)
 		{
-			return false;
+			return false
 		}
 		else if (cardInHand(specificCard: Card(rank: .Queen, suit: .Spade)) && cardInHand(specificCard: Card(rank: .Jack, suit: .Spade)))
 		{
-			return false;
+			return false
 		}
 		else if (cardInHand(specificCard: Card(rank: .Jack, suit: .Spade)) && spadeCount() < 2)
 		{
-			return false;
+			return false
 		}
 		return true
 	}
@@ -53,7 +53,31 @@ class Hand: NSObject{
 	- If there's an ace, need at least 3 other cards.  If one card is a king, need at least 4 more cards
 	- if there's a king need at least 2 other cards (not face values)
 	*/
-	func otherSuitsAllowZero() -> Bool {
+	func otherSuitsAllowZero(suitType:Card.SuitType) -> Bool {
+		let suitTypeCount = suitArray(ofSuitType: suitType).count;
+		if (cardInHand(specificCard: Card(rank: .Ace, suit: suitType)))
+		{
+			if (cardInHand(specificCard: Card(rank: .King, suit: suitType)) && suitTypeCount < 5)
+			{
+				return false
+			}
+			else if (suitTypeCount < 4)
+			{
+				return false
+			}
+		}
+		else if (cardInHand(specificCard: Card(rank: .King, suit: suitType)))
+		{
+			if (suitTypeCount < 3)
+			{
+				return false
+			}
+			else if (cardInHand(specificCard: Card(rank: .Queen, suit: suitType)) || cardInHand(specificCard: Card(rank: .Jack, suit: suitType)))
+			{
+				return false
+			}
+		}
+
 		return true
 	}
 	

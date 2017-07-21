@@ -157,7 +157,7 @@ class HandTests: XCTestCase {
 		aceWithNotEnoughOthers.cards.append(Card(rank: .Ace, suit: .Club))
 		aceWithNotEnoughOthers.cards.append(Card(rank: .Four, suit: .Club))
 		aceWithNotEnoughOthers.cards.append(Card(rank: .Three, suit: .Club))
-		XCTAssertFalse(aceWithNotEnoughOthers.otherSuitsAllowZero())
+		XCTAssertFalse(aceWithNotEnoughOthers.otherSuitsAllowZero(suitType: .Club))
 		
 		//fails because there should be more than 4 other cards if there's an Ace and King
 		let aceWithKing = Hand()
@@ -165,7 +165,7 @@ class HandTests: XCTestCase {
 		aceWithKing.cards.append(Card(rank: .King, suit: .Club))
 		aceWithKing.cards.append(Card(rank: .Four, suit: .Club))
 		aceWithKing.cards.append(Card(rank: .Three, suit: .Club))
-		XCTAssertFalse(aceWithKing.otherSuitsAllowZero())
+		XCTAssertFalse(aceWithKing.otherSuitsAllowZero(suitType: .Club))
 		
 		//Not enough non leads
 		let tooManyLeads = Hand()
@@ -173,20 +173,20 @@ class HandTests: XCTestCase {
 		tooManyLeads.cards.append(Card(rank: .King, suit: .Club))
 		tooManyLeads.cards.append(Card(rank: .Queen, suit: .Club))
 		tooManyLeads.cards.append(Card(rank: .Three, suit: .Club))
-		XCTAssertFalse(tooManyLeads.otherSuitsAllowZero())
+		XCTAssertFalse(tooManyLeads.otherSuitsAllowZero(suitType: .Club))
 		
 		//A king requires 2 more non lead cards
 		let kingHand1 = Hand()
 		kingHand1.cards.append(Card(rank: .King, suit: .Club))
 		kingHand1.cards.append(Card(rank: .Three, suit: .Club))
-		XCTAssertFalse(kingHand1.otherSuitsAllowZero())
+		XCTAssertFalse(kingHand1.otherSuitsAllowZero(suitType: .Club))
 		
 		//A king requires 2 more non lead cards
 		let kingHand2 = Hand()
 		kingHand2.cards.append(Card(rank: .King, suit: .Club))
 		kingHand2.cards.append(Card(rank: .Queen, suit: .Club))
 		kingHand2.cards.append(Card(rank: .Three, suit: .Club))
-		XCTAssertFalse(kingHand2.otherSuitsAllowZero())
+		XCTAssertFalse(kingHand2.otherSuitsAllowZero(suitType: .Club))
 	}
 	
 	func testShouldBidZero(){
